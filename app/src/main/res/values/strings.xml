@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">eBin_v1</string>
+    <string name="title_activity_homepage">HomepageActivity</string>
+</resources>

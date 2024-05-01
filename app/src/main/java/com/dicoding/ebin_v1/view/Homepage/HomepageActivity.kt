@@ -14,6 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.dicoding.ebin_v1.databinding.ActivityHomepageBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -25,6 +26,11 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        BottomSheetBehavior.from(binding.hpBottomSheet).apply {
+            peekHeight = 200
+            this.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager

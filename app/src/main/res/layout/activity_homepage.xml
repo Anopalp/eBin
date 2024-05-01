@@ -23,10 +23,10 @@
         android:layout_height="40dp"
         android:text="@string/btn_homepage_request"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="100dp"
         map:icon="@drawable/trash_logo"
         map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintBottom_toTopOf="@id/cl_bottom_sheet_wrapper" />
+        map:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/btn_account_page"
@@ -34,10 +34,10 @@
         android:layout_height="40dp"
         android:text="@string/btn_homepage_account"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="100dp"
         map:icon="@drawable/account_logo"
         map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintBottom_toTopOf="@id/cl_bottom_sheet_wrapper" />
+        map:layout_constraintBottom_toBottomOf="parent"/>
 
 
 
@@ -57,7 +57,12 @@
             map:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
             android:layout_gravity="bottom">
 
-            <!-- Content for the bottom sheet can go here -->
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/strip_logo"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center|top" />
 
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

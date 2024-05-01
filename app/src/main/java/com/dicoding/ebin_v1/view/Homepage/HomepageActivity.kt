@@ -4,9 +4,12 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.marginBottom
+import androidx.core.view.marginTop
 import com.dicoding.ebin_v1.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -23,13 +26,15 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityHomepageBinding
 
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bottomSheetBehavior = BottomSheetBehavior.from(binding.hpBottomSheet)
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.hpBottomSheet)
 
         bottomSheetBehavior.apply {
             peekHeight = 200
@@ -95,17 +100,24 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun adjustButtonConstraints(slideOffset: Float) {
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.hpBottomSheet)
+        val peekHeight = bottomSheetBehavior.peekHeight
+//
+        val currentHeight = peekHeight + (1200 - peekHeight) * slideOffset
+//
+        val marginAboveBottomSheet = 10
+        val buttonBottomMargin = currentHeight.toInt() + marginAboveBottomSheet
+
         val btnRequest = binding.btnRequestPage
         val btnAccount = binding.btnAccountPage
 
-        val newMargin = 10 + (slideOffset * 100).toInt()
-        val params1 = btnRequest.layoutParams as ConstraintLayout.LayoutParams
-        val params2 = btnAccount.layoutParams as ConstraintLayout.LayoutParams
+        val paramsRequest = btnRequest.layoutParams as ConstraintLayout.LayoutParams
+        val paramsAccount = btnAccount.layoutParams as ConstraintLayout.LayoutParams
 
-        params1.bottomMargin = newMargin
-        params2.bottomMargin = newMargin
+        paramsRequest.bottomMargin = buttonBottomMargin
+        paramsAccount.bottomMargin = buttonBottomMargin
 
-        btnRequest.layoutParams = params1
-        btnAccount.layoutParams = params2
+        btnRequest.layoutParams = paramsRequest
+        btnAccount.layoutParams = paramsAccount
     }
 }

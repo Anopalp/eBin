@@ -16,8 +16,33 @@
         map:layout_constraintStart_toStartOf="parent"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintBottom_toBottomOf="parent"/>
+    
+    <Button
+        android:id="@+id/btn_request_page"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:text="@string/btn_homepage_request"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        map:icon="@drawable/trash_logo"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintBottom_toTopOf="@id/cl_bottom_sheet_wrapper" />
+
+    <Button
+        android:id="@+id/btn_account_page"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:text="@string/btn_homepage_account"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        map:icon="@drawable/account_logo"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintBottom_toTopOf="@id/cl_bottom_sheet_wrapper" />
+
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cl_bottom_sheet_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         map:layout_constraintBottom_toBottomOf="parent"

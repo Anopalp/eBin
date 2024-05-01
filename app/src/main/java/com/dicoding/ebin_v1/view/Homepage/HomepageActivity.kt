@@ -3,7 +3,9 @@ package com.dicoding.ebin_v1.view.Homepage
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.dicoding.ebin_v1.R
 
@@ -27,10 +29,21 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        BottomSheetBehavior.from(binding.hpBottomSheet).apply {
+        val bottomSheetBehavior = BottomSheetBehavior.from(binding.hpBottomSheet)
+
+        bottomSheetBehavior.apply {
             peekHeight = 200
             this.state = BottomSheetBehavior.STATE_COLLAPSED
         }
+
+        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) { }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                adjustButtonConstraints(slideOffset)
+            }
+
+        })
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -79,5 +92,20 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         } else {
             requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }
+    }
+
+    private fun adjustButtonConstraints(slideOffset: Float) {
+        val btnRequest = binding.btnRequestPage
+        val btnAccount = binding.btnAccountPage
+
+        val newMargin = 10 + (slideOffset * 100).toInt()
+        val params1 = btnRequest.layoutParams as ConstraintLayout.LayoutParams
+        val params2 = btnAccount.layoutParams as ConstraintLayout.LayoutParams
+
+        params1.bottomMargin = newMargin
+        params2.bottomMargin = newMargin
+
+        btnRequest.layoutParams = params1
+        btnAccount.layoutParams = params2
     }
 }

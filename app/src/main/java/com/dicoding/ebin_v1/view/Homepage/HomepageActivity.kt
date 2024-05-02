@@ -3,6 +3,7 @@ package com.dicoding.ebin_v1.view.Homepage
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.result.contract.ActivityResultContracts
@@ -10,7 +11,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.ebin_v1.R
+import com.dicoding.ebin_v1.data.entity.TrashStation
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -34,10 +38,19 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvTrashStationList.layoutManager = layoutManager
+
+        val adapter = TrashStationAdapter()
+        adapter.submitList(dummyTrashStation)
+        binding.rvTrashStationList.adapter = adapter
+
+        binding.svSearchView.setupWithSearchBar(binding.sbSearchBar)
+
         bottomSheetBehavior = BottomSheetBehavior.from(binding.hpBottomSheet)
 
         bottomSheetBehavior.apply {
-            peekHeight = 200
+            peekHeight = 300
             this.state = BottomSheetBehavior.STATE_COLLAPSED
         }
 
@@ -102,9 +115,9 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun adjustButtonConstraints(slideOffset: Float) {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.hpBottomSheet)
         val peekHeight = bottomSheetBehavior.peekHeight
-//
+
         val currentHeight = peekHeight + (1200 - peekHeight) * slideOffset
-//
+
         val marginAboveBottomSheet = 10
         val buttonBottomMargin = currentHeight.toInt() + marginAboveBottomSheet
 
@@ -119,5 +132,13 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         btnRequest.layoutParams = paramsRequest
         btnAccount.layoutParams = paramsAccount
+    }
+
+    companion object {
+        val dummyTrashStation: List<TrashStation> = arrayListOf(
+            TrashStation("A", "Luthfi", 75.0, -6.89329641160456, 107.61119012530456),
+            TrashStation("B", "Sam", 60.0, -6.895194656448975, 107.61721577749637),
+            TrashStation("C", "Ibnu", 100.0, -6.899749771726763, 107.61129215349176)
+        )
     }
 }

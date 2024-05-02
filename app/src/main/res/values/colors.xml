@@ -3,8 +3,8 @@
     <!-- Light Colors -->
     <color name="md_theme_light_primary">#22542A</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
-    <color name="md_theme_light_primaryContainer">#47794B</color>
-    <color name="md_theme_light_onPrimaryContainer">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#B8F1B9</color>
+    <color name="md_theme_light_onPrimaryContainer">#002108</color>
     <color name="md_theme_light_secondary">#4F644E</color>
     <color name="md_theme_light_onSecondary">#FFFFFF</color>
     <color name="md_theme_light_secondaryContainer">#D3EACF</color>

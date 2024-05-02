@@ -116,7 +116,7 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.hpBottomSheet)
         val peekHeight = bottomSheetBehavior.peekHeight
 
-        val currentHeight = peekHeight + (1200 - peekHeight) * slideOffset
+        val currentHeight = peekHeight + (1250 - peekHeight) * slideOffset
 
         val marginAboveBottomSheet = 10
         val buttonBottomMargin = currentHeight.toInt() + marginAboveBottomSheet
@@ -136,9 +136,9 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object {
         val dummyTrashStation: List<TrashStation> = arrayListOf(
-            TrashStation("A", "Luthfi", 75.0, -6.89329641160456, 107.61119012530456),
-            TrashStation("B", "Sam", 60.0, -6.895194656448975, 107.61721577749637),
-            TrashStation("C", "Ibnu", 100.0, -6.899749771726763, 107.61129215349176)
+            TrashStation("A", "Luthfi", 75.0,"Jl. Ganesa 7-11, Lb. Siliwangi, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132", "8.00 - 16.00",-6.89329641160456, 107.61119012530456),
+            TrashStation("B", "Sam", 60.0, "Jl. Dipati Ukur 33-35, Lebakgede, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132","8.00 - 16.00",-6.895194656448975, 107.61721577749637),
+            TrashStation("C", "Ibnu", 100.0, "Jl. Sulanjana 26-8, Tamansari, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40116","8.00 - 16.00",-6.899749771726763, 107.61129215349176)
         )
     }
 }

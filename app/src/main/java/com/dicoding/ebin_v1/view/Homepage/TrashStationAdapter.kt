@@ -1,5 +1,6 @@
 package com.dicoding.ebin_v1.view.Homepage
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.ebin_v1.data.entity.TrashStation
 import com.dicoding.ebin_v1.databinding.ItemTrashstationBinding
+import com.dicoding.ebin_v1.view.TrashStationDetail.TrashStationDetailActivity
 
 class TrashStationAdapter : ListAdapter<TrashStation, TrashStationAdapter.MyViewHolder>(DIFF_CALLBACK){
     class MyViewHolder(private val binding: ItemTrashstationBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -20,6 +22,13 @@ class TrashStationAdapter : ListAdapter<TrashStation, TrashStationAdapter.MyView
                 binding.txtListTrashStationAvailability.text = "Available"
             } else {
                 binding.txtListTrashStationAvailability.text = "Not Available"
+            }
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, TrashStationDetailActivity::class.java)
+                intent.putExtra(TrashStationDetailActivity.KEY_DETAIL, trashStation)
+                itemView.context.startActivity(intent)
+
             }
         }
     }

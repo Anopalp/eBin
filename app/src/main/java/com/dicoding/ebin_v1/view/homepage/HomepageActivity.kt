@@ -1,18 +1,15 @@
-package com.dicoding.ebin_v1.view.Homepage
+package com.dicoding.ebin_v1.view.homepage
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginBottom
-import androidx.core.view.marginTop
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.TrashStation
 
@@ -23,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.dicoding.ebin_v1.databinding.ActivityHomepageBinding
+import com.dicoding.ebin_v1.view.account.AccountActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -67,17 +65,16 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        setAction()
+
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    private fun setAction() {
+        binding.btnAccountPage.setOnClickListener {
+            startActivity(Intent(this, AccountActivity::class.java))
+        }
+    }
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 

@@ -29,6 +29,7 @@
     <color name="md_theme_light_inverseSurface">#2E312D</color>
     <color name="md_theme_light_inverseOnSurface">#F0F1EB</color>
     <color name="md_theme_light_inversePrimary">#9DD49E</color>
+    <color name="md_theme_light_surfaceContainer">#EBEFE7</color>
 
     <!-- Dark Colors -->
     <color name="md_theme_dark_primary">#9DD49E</color>
@@ -59,4 +60,5 @@
     <color name="md_theme_dark_inverseSurface">#E1E3DD</color>
     <color name="md_theme_dark_inverseOnSurface">#2E312D</color>
     <color name="md_theme_dark_inversePrimary">#37693D</color>
+    <color name="md_theme_dark_surfaceContainer">#1C211C</color>
 </resources>

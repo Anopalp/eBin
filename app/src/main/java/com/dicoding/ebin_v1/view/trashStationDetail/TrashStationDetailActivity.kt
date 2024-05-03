@@ -1,8 +1,7 @@
-package com.dicoding.ebin_v1.view.TrashStationDetail
+package com.dicoding.ebin_v1.view.trashStationDetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.TrashStation
 import com.dicoding.ebin_v1.databinding.ActivityTrashStationDetailBinding
 

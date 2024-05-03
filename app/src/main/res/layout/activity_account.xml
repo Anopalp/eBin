@@ -27,7 +27,8 @@
                 android:layout_height="?attr/actionBarSize"
                 android:elevation="0dp"
                 app:title="Account"
-                app:navigationIcon="@drawable/back_navigation_logo" />
+                app:navigationIcon="@drawable/back_navigation_logo"
+                app:menu="@menu/option_menu"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

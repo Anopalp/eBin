@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.dicoding.ebin_v1.databinding.ActivityHomepageBinding
 import com.dicoding.ebin_v1.view.account.AccountActivity
+import com.dicoding.ebin_v1.view.marketplace.MarketplaceActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -74,7 +75,12 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.btnAccountPage.setOnClickListener {
             startActivity(Intent(this, AccountActivity::class.java))
         }
+
+        binding.btnRequestPage.setOnClickListener {
+            startActivity(Intent(this, MarketplaceActivity::class.java))
+        }
     }
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 

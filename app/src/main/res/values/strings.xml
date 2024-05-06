@@ -6,4 +6,9 @@
     <string name="btn_homepage_request">Request</string>
     <string name="btn_homepage_account">Account</string>
     <string name="txt_homepage_search_placeholder">Search trash station</string>
+
+    <string name="all_request">All Requests</string>
+    <string name="my_requests">My Requests</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

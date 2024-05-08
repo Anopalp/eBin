@@ -82,8 +82,8 @@
                     app:layout_constraintBottom_toBottomOf="parent" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@drawable/arrow_right_list_logo"
                     android:layout_marginEnd="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -294,6 +294,5 @@
                 app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-<!--    End Here-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

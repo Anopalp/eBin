@@ -7,6 +7,7 @@ import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.User
 import com.dicoding.ebin_v1.databinding.ActivityAccountBinding
 import com.dicoding.ebin_v1.view.editAccount.EditAccountActivity
+import com.dicoding.ebin_v1.view.qrCode.QRCodeActivity
 
 class AccountActivity : AppCompatActivity() {
 
@@ -34,6 +35,10 @@ class AccountActivity : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+
+        binding.btnAccountQrCode.setOnClickListener {
+            startActivity(Intent(this, QRCodeActivity::class.java))
         }
     }
 

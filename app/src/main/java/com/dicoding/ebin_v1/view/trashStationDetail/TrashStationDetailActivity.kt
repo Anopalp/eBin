@@ -1,9 +1,11 @@
 package com.dicoding.ebin_v1.view.trashStationDetail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dicoding.ebin_v1.data.entity.TrashStation
 import com.dicoding.ebin_v1.databinding.ActivityTrashStationDetailBinding
+import com.dicoding.ebin_v1.view.qrCode.QRCodeActivity
 
 class TrashStationDetailActivity : AppCompatActivity() {
 
@@ -24,6 +26,10 @@ class TrashStationDetailActivity : AppCompatActivity() {
     private fun setAction() {
         binding.mtDetailToolBar.setNavigationOnClickListener {
             finish()
+        }
+
+        binding.btnDetailShowQrCode.setOnClickListener {
+            startActivity(Intent(this, QRCodeActivity::class.java))
         }
     }
 

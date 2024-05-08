@@ -9,6 +9,9 @@
 
     <string name="all_request">All Requests</string>
     <string name="my_requests">My Requests</string>
+
+    <string name="trash_station">Trash Station</string>
+    <string name="requests">Requests</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

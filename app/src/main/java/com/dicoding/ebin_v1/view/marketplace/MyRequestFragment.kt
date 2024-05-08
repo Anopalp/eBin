@@ -41,8 +41,6 @@ class MyRequestFragment : Fragment() {
     }
 
     companion object {
-        const val ARG_POSITION = "arg_position"
-
         val dummyRequested: List<Requests> = arrayListOf(
             Requests("sam", 10, "botol plastik", 6),
             Requests("sam", 10, "lembar kertas koran", 5)

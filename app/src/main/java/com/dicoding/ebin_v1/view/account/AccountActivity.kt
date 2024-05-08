@@ -8,6 +8,7 @@ import com.dicoding.ebin_v1.data.entity.User
 import com.dicoding.ebin_v1.databinding.ActivityAccountBinding
 import com.dicoding.ebin_v1.view.editAccount.EditAccountActivity
 import com.dicoding.ebin_v1.view.qrCode.QRCodeActivity
+import com.dicoding.ebin_v1.view.transactionHistory.TransactionHistoryActivity
 
 class AccountActivity : AppCompatActivity() {
 
@@ -39,6 +40,10 @@ class AccountActivity : AppCompatActivity() {
 
         binding.btnAccountQrCode.setOnClickListener {
             startActivity(Intent(this, QRCodeActivity::class.java))
+        }
+
+        binding.btnAccountShowTransactionHistory.setOnClickListener {
+            startActivity(Intent(this, TransactionHistoryActivity::class.java))
         }
     }
 

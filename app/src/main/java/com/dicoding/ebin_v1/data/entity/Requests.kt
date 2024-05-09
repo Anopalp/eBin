@@ -8,5 +8,7 @@ data class Requests(
     val owner: String,
     val amount: Int,
     val type: String,
-    val reward: Int
+    val reward: Int,
+    val requestStart: String? = null,
+    val requestEnd: String? = null
 ) : Parcelable

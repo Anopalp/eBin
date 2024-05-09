@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_request_history_item_container"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@drawable/shape_qr_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txt_request_history_date_fulfill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Friday, 5 April 2024"
+            android:textSize="12sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_request_history_pre_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You got"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_request_history_date_fulfill" />
+
+        <TextView
+            android:id="@+id/txt_request_history_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/txt_request_history_pre_points"
+            app:layout_constraintTop_toBottomOf="@id/txt_request_history_date_fulfill"/>
+
+        <TextView
+            android:id="@+id/txt_request_history_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="points"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/txt_request_history_points"
+            app:layout_constraintTop_toBottomOf="@id/txt_request_history_date_fulfill" />
+
+        <TextView
+            android:id="@+id/txt_request_history_pre_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You completed request of"
+            android:textSize="14sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintTop_toBottomOf="@id/txt_request_history_pre_points"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_request_history_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30"
+            android:textSize="14sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/txt_request_history_pre_amount"
+            app:layout_constraintTop_toBottomOf="@id/txt_request_history_pre_points" />
+
+        <TextView
+            android:id="@+id/txt_request_history_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="botol plastik"
+            android:textSize="14sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/txt_request_history_amount"
+            app:layout_constraintTop_toBottomOf="@id/txt_request_history_points" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

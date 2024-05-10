@@ -1,5 +1,6 @@
 package com.dicoding.ebin_v1.view.marketplace
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.ebin_v1.data.entity.Requests
 import com.dicoding.ebin_v1.databinding.ItemRequestsBinding
+import com.dicoding.ebin_v1.view.requestDetail.RequestDetailActivity
 
 class RequestAdapter : ListAdapter<Requests, RequestAdapter.RequestViewHolder>(DIFF_CALLBACK) {
     class RequestViewHolder(private val binding: ItemRequestsBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -15,6 +17,12 @@ class RequestAdapter : ListAdapter<Requests, RequestAdapter.RequestViewHolder>(D
             binding.txtRequestAmount.text = requests.amount.toString()
             binding.txtRequestType.text = requests.type
             binding.txtRequestRewardPointPlaceholder.text =requests.reward.toString()
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, RequestDetailActivity::class.java)
+                intent.putExtra(RequestDetailActivity.KEY_DETAIL, requests)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

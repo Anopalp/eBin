@@ -10,5 +10,7 @@ data class Requests(
     val type: String,
     val reward: Int,
     val requestStart: String? = null,
-    val requestEnd: String? = null
+    val requestEnd: String? = null,
+    val detail: String? = null,
+    val address: String? = null
 ) : Parcelable

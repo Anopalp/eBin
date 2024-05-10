@@ -42,12 +42,12 @@ class MyRequestFragment : Fragment() {
 
     companion object {
         val dummyRequested: List<Requests> = arrayListOf(
-            Requests("sam", 10, "botol plastik", 6),
-            Requests("sam", 10, "lembar kertas koran", 5)
+            Requests("sam", 10, "botol plastik", 6, "Saturday, 13 April 2024 ", null, "Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih", "Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363"),
+            Requests("sam", 10, "lembar kertas koran", 5, "Saturday, 13 April 2024 ", null, "Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih", "Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363")
         )
 
         val dummyRequestsTaken: List<Requests> = arrayListOf(
-            Requests("luthfi", 25, "botol plastik", 15)
+            Requests("luthfi", 25, "botol plastik", 15, "Saturday, 13 April 2024 ", null, "Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih", "Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363")
         )
     }
 }

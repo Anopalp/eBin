@@ -35,12 +35,12 @@ class RequestsFragment : Fragment() {
 
     companion object {
         val dummyRequests: List<Requests> = arrayListOf(
-            Requests("luthfi", 100, "botol plastik", 60),
-            Requests("alief", 50, "gram kertas koran", 50),
-            Requests("alief",120, "lembar kertas HVS", 30),
-            Requests("luthfi", 25, "botol plastik", 15),
-            Requests("sam", 25, "botol plastik", 6),
-            Requests("sam", 10, "lembar kertas koran", 5)
+            Requests("luthfi", 100, "botol plastik", 60, "Saturday, 13 April 2024 ", null, "Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih", "Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363"),
+            Requests("alief", 50, "gram kertas koran", 50, "Saturday, 13 April 2024 ", null, "Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih", "Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363"),
+            Requests("alief",120, "lembar kertas HVS", 30,"Saturday, 13 April 2024 ", null, "Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih", "Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363"),
+            Requests("luthfi", 25, "botol plastik", 15,"Saturday, 13 April 2024 ", null, "Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih", "Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363"),
+            Requests("sam", 25, "botol plastik", 6,"Saturday, 13 April 2024 ", null, "Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih", "Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363"),
+            Requests("sam", 10, "lembar kertas koran", 5,"Saturday, 13 April 2024 ", null, "Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih", "Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363")
         )
     }
 }

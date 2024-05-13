@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,6 +13,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.TrashStation
+import com.dicoding.ebin_v1.data.response.TrashStationsResponse
+import com.dicoding.ebin_v1.data.response.TrashStationsResponseItem
+import com.dicoding.ebin_v1.data.retrofit.ApiConfig
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -24,6 +28,9 @@ import com.dicoding.ebin_v1.databinding.ActivityHomepageBinding
 import com.dicoding.ebin_v1.view.account.AccountActivity
 import com.dicoding.ebin_v1.view.marketplace.MarketplaceActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -71,7 +78,7 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
         setAction()
-
+        findTrashStations()
     }
 
     private fun setAction() {
@@ -145,6 +152,30 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         btnRequest.layoutParams = paramsRequest
         btnAccount.layoutParams = paramsAccount
+    }
+
+    private fun findTrashStations() {
+        val client = ApiConfig.getApiService().getAllTrashStations()
+        client.enqueue(object : Callback<List<TrashStationsResponseItem>> {
+            override fun onResponse(
+                call: Call<List<TrashStationsResponseItem>>,
+                response: Response<List<TrashStationsResponseItem>>
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        Log.d("RESPONSE BODY OK", responseBody.toString())
+                    }
+                } else {
+                    Log.d("RESPONSE SUCCESSFUL", "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<TrashStationsResponseItem>>, t: Throwable) {
+                Log.e("API ERROR", "onFailure: ${t.message}")
+            }
+
+        })
     }
 
     companion object {

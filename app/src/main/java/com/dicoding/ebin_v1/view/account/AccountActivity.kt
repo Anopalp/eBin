@@ -9,16 +9,34 @@ import com.dicoding.ebin_v1.databinding.ActivityAccountBinding
 import com.dicoding.ebin_v1.view.editAccount.EditAccountActivity
 import com.dicoding.ebin_v1.view.qrCode.QRCodeActivity
 import com.dicoding.ebin_v1.view.transactionHistory.TransactionHistoryActivity
+import com.dicoding.ebin_v1.view.welcomePage.WelcomePageActivity
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class AccountActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAccountBinding
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = Firebase.auth
+        checkSession(auth)
+
         setAction()
+    }
+
+    private fun checkSession(auth: FirebaseAuth) {
+        val firebaseUser = auth.currentUser
+
+        if (firebaseUser == null) {
+            startActivity(Intent(this, WelcomePageActivity::class.java))
+            finish()
+        }
     }
 
     private fun setAction() {

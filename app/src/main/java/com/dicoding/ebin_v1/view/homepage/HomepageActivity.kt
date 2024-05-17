@@ -2,11 +2,13 @@ package com.dicoding.ebin_v1.view.homepage
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -40,6 +42,7 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityHomepageBinding
     private lateinit var homepageViewModel: HomepageViewModel
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
+    private val adapter = TrashStationAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,10 +52,6 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvTrashStationList.layoutManager = layoutManager
-
-        val adapter = TrashStationAdapter()
-        adapter.submitList(dummyTrashStation)
-        binding.rvTrashStationList.adapter = adapter
 
         homepageViewModel = ViewModelProvider(this).get(HomepageViewModel::class.java)
 
@@ -85,8 +84,13 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         homepageViewModel.getAllTrashStations()
 
         homepageViewModel.response.observe(this) { response ->
-            Log.d("API FETCHED", response.toString())
+            setListAdapter(response)
         }
+    }
+
+    private fun setListAdapter(trashStations: List<TrashStationsResponseItem>) {
+        adapter.submitList(trashStations)
+        binding.rvTrashStationList.adapter = adapter
     }
 
     private fun setAction() {
@@ -133,6 +137,19 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
                 if (location != null) {
                     val currentLocation = LatLng(location.latitude, location.longitude)
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
+
+                    homepageViewModel.response.observe(this) { response ->
+                        response.forEach { station ->
+                            var pinStation = LatLng(station.location!!.latitude!!.toDouble(), station.location!!.longitude!!.toDouble())
+                            val distance = FloatArray(1)
+                            Location.distanceBetween(
+                                location.latitude, location.longitude,
+                                pinStation.latitude, pinStation.longitude,
+                                distance
+                            )
+                            mMap.addMarker(MarkerOptions().position(pinStation).title("Trash Station ${station.id} - Distance ${distance[0]} m"))
+                        }
+                    }
                 }
             }
         } else {

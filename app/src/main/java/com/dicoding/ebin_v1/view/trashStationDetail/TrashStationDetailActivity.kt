@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dicoding.ebin_v1.data.entity.TrashStation
+import com.dicoding.ebin_v1.data.response.TrashStationsResponseItem
 import com.dicoding.ebin_v1.databinding.ActivityTrashStationDetailBinding
 import com.dicoding.ebin_v1.view.qrCode.QRCodeActivity
 
@@ -16,7 +17,7 @@ class TrashStationDetailActivity : AppCompatActivity() {
         binding = ActivityTrashStationDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val detailTrashStation = intent.getParcelableExtra(KEY_DETAIL) as TrashStation?
+        val detailTrashStation = intent.getParcelableExtra(KEY_DETAIL) as TrashStationsResponseItem?
 
         setDetailData(detailTrashStation!!)
 
@@ -33,13 +34,13 @@ class TrashStationDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setDetailData(detailTrashStation: TrashStation) {
+    private fun setDetailData(detailTrashStation: TrashStationsResponseItem) {
         binding.apply {
-            mtDetailToolBar.title = "Trash Station " + detailTrashStation.trashStationId
-            txtDetailAddressDescription.text = detailTrashStation.address
-            txtDetailDistanceDescription.text = detailTrashStation.distance.toString()
-            txtDetailOpenHoursDescription.text = detailTrashStation.openHours
-            txtDetailCapacityDescription.text = detailTrashStation.capacity.toString()
+            mtDetailToolBar.title = "Trash Station " + detailTrashStation.id
+            txtDetailAddressDescription.text = "Address Description"
+            txtDetailDistanceDescription.text = "Distance"
+            txtDetailOpenHoursDescription.text = "${detailTrashStation.openHours?.openTime}.00 - ${detailTrashStation.openHours?.closeTime}.00"
+            txtDetailCapacityDescription.text = "${detailTrashStation.capacity.toString()}%"
         }
     }
 

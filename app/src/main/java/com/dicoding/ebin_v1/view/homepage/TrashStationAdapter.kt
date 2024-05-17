@@ -7,17 +7,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.ebin_v1.data.entity.TrashStation
+import com.dicoding.ebin_v1.data.response.TrashStationsResponseItem
 import com.dicoding.ebin_v1.databinding.ItemTrashstationBinding
 import com.dicoding.ebin_v1.view.trashStationDetail.TrashStationDetailActivity
 
-class TrashStationAdapter : ListAdapter<TrashStation, TrashStationAdapter.MyViewHolder>(DIFF_CALLBACK){
+class TrashStationAdapter : ListAdapter<TrashStationsResponseItem, TrashStationAdapter.MyViewHolder>(DIFF_CALLBACK){
     class MyViewHolder(private val binding: ItemTrashstationBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(trashStation: TrashStation) {
-            binding.txtListTrashStationLogo.text = trashStation.trashStationId
-            binding.txtListTrashStationId.text = trashStation.trashStationId
-            binding.txtListTrashStationDistance.text = trashStation.distance.toString()
+        fun bind(trashStation: TrashStationsResponseItem) {
+            binding.txtListTrashStationLogo.text = trashStation.id
+            binding.txtListTrashStationId.text = trashStation.id
+            binding.txtListTrashStationDistance.text = "200m"
 
-            if (trashStation.capacity < 100) {
+            if (trashStation.available!!) {
                 binding.txtListTrashStationAvailability.text = "Available"
             } else {
                 binding.txtListTrashStationAvailability.text = "Not Available"
@@ -43,10 +44,10 @@ class TrashStationAdapter : ListAdapter<TrashStation, TrashStationAdapter.MyView
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TrashStation>() {
-            override fun areItemsTheSame(oldItem: TrashStation, newItem: TrashStation): Boolean = oldItem == newItem
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TrashStationsResponseItem>() {
+            override fun areItemsTheSame(oldItem: TrashStationsResponseItem, newItem: TrashStationsResponseItem): Boolean = oldItem == newItem
 
-            override fun areContentsTheSame(oldItem: TrashStation, newItem: TrashStation): Boolean = oldItem == newItem
+            override fun areContentsTheSame(oldItem: TrashStationsResponseItem, newItem: TrashStationsResponseItem): Boolean = oldItem == newItem
 
         }
     }

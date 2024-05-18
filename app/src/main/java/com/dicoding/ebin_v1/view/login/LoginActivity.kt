@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-
+            login()
         }
     }
 

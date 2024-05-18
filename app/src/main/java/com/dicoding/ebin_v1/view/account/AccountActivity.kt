@@ -7,6 +7,7 @@ import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.User
 import com.dicoding.ebin_v1.databinding.ActivityAccountBinding
 import com.dicoding.ebin_v1.view.editAccount.EditAccountActivity
+import com.dicoding.ebin_v1.view.homepage.HomepageActivity
 import com.dicoding.ebin_v1.view.qrCode.QRCodeActivity
 import com.dicoding.ebin_v1.view.transactionHistory.TransactionHistoryActivity
 import com.dicoding.ebin_v1.view.welcomePage.WelcomePageActivity
@@ -50,6 +51,12 @@ class AccountActivity : AppCompatActivity() {
                     val intent = Intent(this, EditAccountActivity::class.java)
                     intent.putExtra(EditAccountActivity.KEY_DETAIL, user)
                     startActivity(intent)
+                    true
+                }
+                R.id.action_logout -> {
+                    auth.signOut()
+                    startActivity(Intent(this, HomepageActivity::class.java))
+                    finish()
                     true
                 }
                 else -> false

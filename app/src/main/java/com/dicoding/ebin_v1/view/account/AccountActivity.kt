@@ -82,7 +82,9 @@ class AccountActivity : AppCompatActivity() {
         }
 
         binding.btnAccountShowTransactionHistory.setOnClickListener {
-            startActivity(Intent(this, TransactionHistoryActivity::class.java))
+            val intent = Intent(this, TransactionHistoryActivity::class.java)
+            intent.putExtra(TransactionHistoryActivity.KEY_DETAIL, currentUserData)
+            startActivity(intent)
         }
     }
 

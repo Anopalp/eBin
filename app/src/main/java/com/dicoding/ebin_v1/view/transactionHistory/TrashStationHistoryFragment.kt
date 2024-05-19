@@ -1,6 +1,7 @@
 package com.dicoding.ebin_v1.view.transactionHistory
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +9,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.Transaction
+import com.dicoding.ebin_v1.data.response.GetAllUsersResponseItem
 import com.dicoding.ebin_v1.databinding.FragmentTrashStationHistoryBinding
 
 class TrashStationHistoryFragment : Fragment() {
 
     private lateinit var binding: FragmentTrashStationHistoryBinding
+    private lateinit var detailAccount: GetAllUsersResponseItem
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,11 +28,18 @@ class TrashStationHistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        arguments?.let {
+            detailAccount = it.getParcelable(TransactionHistoryActivity.KEY_DETAIL)!!
+            Log.d("DETAIL ACCOUNT", detailAccount.toString())
+        }
+
+        val transaction = detailAccount.transaction
+
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvTrashStationHistoryList.layoutManager = layoutManager
 
         val historyAdapter = TrashStationHistoryAdapter()
-        historyAdapter.submitList(dummyHistory)
+        historyAdapter.submitList(transaction)
         binding.rvTrashStationHistoryList.adapter = historyAdapter
 
     }

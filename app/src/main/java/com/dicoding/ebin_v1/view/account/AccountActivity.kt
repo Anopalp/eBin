@@ -118,8 +118,9 @@ class AccountActivity : AppCompatActivity() {
             val currentUser = auth.currentUser!!.email
 
             currentUserData = userList.find { it.email == currentUser }!!
-
             Log.d("SETTING DATA", currentUserData.toString())
+
+            setUserData()
         } catch (e: Exception) {
             Log.e("SETTING DATA", "onFailure: ${e.message}")
         }
@@ -127,7 +128,12 @@ class AccountActivity : AppCompatActivity() {
 
     private fun setUserData() {
         binding.apply {
-
+            txtAccountPointPlaceholder.text = currentUserData.point.toString()
+            txtAccountUsernamePlaceholder.text = currentUserData.username
+            txtAccountFullNamePlaceholder.text = currentUserData.fullname
+            txtAccountPhonePlaceholder.text = currentUserData.phone.toString()
+            txtAccountEmailPlaceholder.text = currentUserData.email
+            txtAccountAddressPlaceholder.text = currentUserData.address
         }
     }
 

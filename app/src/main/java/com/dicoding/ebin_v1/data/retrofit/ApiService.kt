@@ -17,4 +17,10 @@ interface ApiService {
 
     @POST("users")
     fun postUser(@Body userDetail: UserDetail): Call<SignupResponse>
+
+    @PUT("users/{id}")
+    fun editUser(
+        @Path("id") id: String,
+        @Body userDetail: UserDetail
+    ) : Call<SignupResponse>
 }

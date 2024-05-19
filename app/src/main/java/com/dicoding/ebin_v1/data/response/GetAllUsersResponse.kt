@@ -1,13 +1,17 @@
 package com.dicoding.ebin_v1.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class GetAllUsersResponse(
 
 	@field:SerializedName("GetAllUsersResponse")
 	val getAllUsersResponse: List<GetAllUsersResponseItem?>? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Start(
 
 	@field:SerializedName("seconds")
@@ -15,8 +19,9 @@ data class Start(
 
 	@field:SerializedName("nanoseconds")
 	val nanoseconds: Int? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Timestamp(
 
 	@field:SerializedName("seconds")
@@ -24,8 +29,9 @@ data class Timestamp(
 
 	@field:SerializedName("nanoseconds")
 	val nanoseconds: Int? = null
-)
+) : Parcelable
 
+@Parcelize
 data class TransactionItem(
 
 	@field:SerializedName("reward")
@@ -42,8 +48,9 @@ data class TransactionItem(
 
 	@field:SerializedName("trash")
 	val trash: Trash? = null
-)
+) : Parcelable
 
+@Parcelize
 data class GetAllUsersResponseItem(
 
 	@field:SerializedName("request")
@@ -72,8 +79,9 @@ data class GetAllUsersResponseItem(
 
 	@field:SerializedName("username")
 	val username: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Trash(
 
 	@field:SerializedName("plastic")
@@ -81,8 +89,9 @@ data class Trash(
 
 	@field:SerializedName("paper")
 	val paper: Int? = null
-)
+) : Parcelable
 
+@Parcelize
 data class End(
 
 	@field:SerializedName("seconds")
@@ -90,8 +99,9 @@ data class End(
 
 	@field:SerializedName("nanoseconds")
 	val nanoseconds: Int? = null
-)
+) : Parcelable
 
+@Parcelize
 data class RequestItem(
 
 	@field:SerializedName("reward")
@@ -123,4 +133,4 @@ data class RequestItem(
 
 	@field:SerializedName("status")
 	val status: String? = null
-)
+) : Parcelable

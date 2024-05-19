@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.User
 import com.dicoding.ebin_v1.data.entity.UserDetail
@@ -32,13 +33,14 @@ class AccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAccountBinding.inflate(layoutInflater)
+        showLoading(true)
         setContentView(binding.root)
+
 
         auth = Firebase.auth
         checkSession(auth)
 
         setAction()
-
         getUser()
 
     }
@@ -61,7 +63,7 @@ class AccountActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.action_edit -> {
                     val intent = Intent(this, EditAccountActivity::class.java)
-                    intent.putExtra(EditAccountActivity.KEY_DETAIL, user)
+                    intent.putExtra(EditAccountActivity.KEY_DETAIL, currentUserData)
                     startActivity(intent)
                     true
                 }
@@ -134,6 +136,17 @@ class AccountActivity : AppCompatActivity() {
             txtAccountPhonePlaceholder.text = currentUserData.phone.toString()
             txtAccountEmailPlaceholder.text = currentUserData.email
             txtAccountAddressPlaceholder.text = currentUserData.address
+        }
+        showLoading(false)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.svDetailContainer.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+            binding.svDetailContainer.visibility = View.VISIBLE
         }
     }
 

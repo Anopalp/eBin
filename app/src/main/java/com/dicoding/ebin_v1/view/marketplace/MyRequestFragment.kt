@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.Requests
+import com.dicoding.ebin_v1.data.response.GetAllRequestResponseItem
 import com.dicoding.ebin_v1.databinding.FragmentMyRequestBinding
 
 class MyRequestFragment : Fragment() {
 
     private lateinit var binding: FragmentMyRequestBinding
+    private lateinit var requests: List<GetAllRequestResponseItem>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,13 +33,19 @@ class MyRequestFragment : Fragment() {
         val requestTakenLayoutManager = LinearLayoutManager(requireContext())
         binding.rvRequestTaken.layoutManager = requestTakenLayoutManager
 
-        val requestedAdapter = RequestAdapter()
-        requestedAdapter.submitList(dummyRequested)
-        binding.rvMyRequestsList.adapter = requestedAdapter
+        arguments?.let {
+            requests = it.getParcelableArrayList<GetAllRequestResponseItem>("REQUEST_LIST") ?: emptyList()
 
-        val requestTakenAdapter = RequestAdapter()
-        requestTakenAdapter.submitList(dummyRequestsTaken)
-        binding.rvRequestTaken.adapter = requestTakenAdapter
+            val requestedAdapter = RequestAdapter()
+            requestedAdapter.submitList(requests)
+            binding.rvMyRequestsList.adapter = requestedAdapter
+        }
+
+
+
+//        val requestTakenAdapter = RequestAdapter()
+//        requestTakenAdapter.submitList(dummyRequestsTaken)
+//        binding.rvRequestTaken.adapter = requestTakenAdapter
 
     }
 

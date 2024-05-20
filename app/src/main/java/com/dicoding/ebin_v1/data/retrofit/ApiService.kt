@@ -1,6 +1,7 @@
 package com.dicoding.ebin_v1.data.retrofit
 
 import com.dicoding.ebin_v1.data.entity.UserDetail
+import com.dicoding.ebin_v1.data.response.GetAllRequestResponseItem
 import com.dicoding.ebin_v1.data.response.GetAllUsersResponseItem
 import com.dicoding.ebin_v1.data.response.SignupResponse
 import com.dicoding.ebin_v1.data.response.TrashStationsResponse
@@ -23,4 +24,7 @@ interface ApiService {
         @Path("id") id: String,
         @Body userDetail: UserDetail
     ) : Call<SignupResponse>
+
+    @GET("requests")
+    fun getAllRequests() : Call<List<GetAllRequestResponseItem>>
 }

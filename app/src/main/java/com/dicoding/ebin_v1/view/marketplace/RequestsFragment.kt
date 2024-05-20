@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.Requests
+import com.dicoding.ebin_v1.data.response.GetAllRequestResponseItem
 import com.dicoding.ebin_v1.databinding.FragmentRequestsBinding
 
 class RequestsFragment : Fragment() {
 
     private lateinit var binding: FragmentRequestsBinding
+    private lateinit var requests: List<GetAllRequestResponseItem>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,9 +30,14 @@ class RequestsFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvAllRequestsLists.layoutManager  = layoutManager
 
-        val adapter = RequestAdapter()
-        adapter.submitList(dummyRequests)
-        binding.rvAllRequestsLists.adapter = adapter
+        arguments?.let {
+            requests = it.getParcelableArrayList<GetAllRequestResponseItem>("REQUEST_LIST") ?: emptyList()
+            val adapter = RequestAdapter()
+            adapter.submitList(requests)
+            binding.rvAllRequestsLists.adapter = adapter
+        }
+
+
     }
 
     companion object {

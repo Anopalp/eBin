@@ -31,7 +31,7 @@ class QRCodeActivity : AppCompatActivity() {
 
         val imageView = binding.ivQrCode
         val textToEncode = auth.currentUser!!.uid
-        val qrCodeBitmap = generateQRCode(textToEncode, 500, 500)
+        val qrCodeBitmap = generateQRCode(textToEncode, 800, 800)
 
         imageView.setImageBitmap(qrCodeBitmap)
     }

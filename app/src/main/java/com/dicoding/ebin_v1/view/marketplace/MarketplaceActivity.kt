@@ -51,6 +51,11 @@ class MarketplaceActivity : AppCompatActivity() {
         setAction()
     }
 
+    override fun onResume() {
+        super.onResume()
+        marketplaceViewModel.getAllRequests()
+    }
+
     private fun setListAdapter(requests: List<GetAllRequestResponseItem>) {
 
     }

@@ -66,7 +66,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_input_edit_text_add_request_amount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -118,7 +119,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_input_edit_text_add_request_reward"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
     
     <Button

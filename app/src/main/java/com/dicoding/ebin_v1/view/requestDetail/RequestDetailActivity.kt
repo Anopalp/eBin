@@ -32,18 +32,13 @@ class RequestDetailActivity : AppCompatActivity() {
     }
 
     private fun setDetailData(detailRequest: GetAllRequestResponseItem) {
-        val seconds = detailRequest.start?.seconds as Long
-        val nanoseconds = detailRequest.start.seconds as Long
-        val milliseconds = TimeUnit.SECONDS.toMillis(seconds) + TimeUnit.NANOSECONDS.toMillis(nanoseconds)
-        val date = Date(milliseconds)
-        Log.d("DATE", date.toString())
         binding.apply {
             mtDetailRequestToolBar.title = detailRequest.title
             detailRequestItemRequesterPlaceholder.text = detailRequest.senderID
             detailRequestItemDescriptionPlaceholder.text = detailRequest.description
             detailRequestItemAddressPlaceholder.text = detailRequest.address
             detailRequestItemRewardPlaceholder.text = detailRequest.reward.toString()
-            detailRequestItemDatePlaceholder.text = date.toString()
+            detailRequestItemDatePlaceholder.text = detailRequest.start
         }
     }
 

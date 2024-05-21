@@ -27,19 +27,19 @@ class AccountViewModel() : ViewModel() {
                         val responseBody = response.body()
                         if (responseBody != null) {
                             _response.value = responseBody ?: emptyList()
-                            Log.d("GET USER", _response.value.toString())
+                            Log.d("GET USER 1", _response.value.toString())
                         } else {
-                            Log.e("GET USER", "onFailure: ${response.message()}")
+                            Log.e("GET USER 2", "onFailure: ${response.message()}")
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<List<GetAllUsersResponseItem>>, t: Throwable) {
-                    Log.e("API ERROR", "onFailure: ${t.message}")
+                    Log.e("API ERROR 1", "onFailure: ${t.message}")
                 }
             })
         } catch (e: Exception) {
-            Log.e("API ERROR", "onFailure: ${e.message}")
+            Log.e("API ERROR 2", "onFailure: ${e.message}")
         }
     }
 }

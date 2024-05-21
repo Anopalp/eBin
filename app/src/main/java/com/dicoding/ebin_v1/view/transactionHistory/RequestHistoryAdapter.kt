@@ -16,13 +16,8 @@ class RequestHistoryAdapter : ListAdapter<RequestItem, RequestHistoryAdapter.Req
 
     class RequestHistoryViewHolder(private val binding: ItemRequestCompletionHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(requests: RequestItem) {
-            val seconds = requests.end?.seconds as Long
-            val nanoseconds = requests.end.seconds as Long
-            val milliseconds = TimeUnit.SECONDS.toMillis(seconds) + TimeUnit.NANOSECONDS.toMillis(nanoseconds)
-            val date = Date(milliseconds)
-            Log.d("DATE", date.toString())
             binding.apply {
-                txtRequestHistoryDateFulfill.text = date.toString()
+                txtRequestHistoryDateFulfill.text = requests.end
                 txtRequestHistoryPoints.text = requests.reward.toString()
                 txtRequestHistoryAmount.text = "null"
                 txtRequestHistoryType.text = "null"

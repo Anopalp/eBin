@@ -16,13 +16,8 @@ class TrashStationHistoryAdapter : ListAdapter<TransactionItem, TrashStationHist
 
     class TrashStationHistoryViewHolder(private val binding: ItemTrashStationHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(transaction: TransactionItem) {
-            val seconds = transaction.timestamp?.seconds as Long
-            val nanoseconds = transaction.timestamp.seconds as Long
-            val milliseconds = TimeUnit.SECONDS.toMillis(seconds) + TimeUnit.NANOSECONDS.toMillis(nanoseconds)
-            val date = Date(milliseconds)
-            Log.d("DATE", date.toString())
             binding.apply {
-                txtTrashStationHistoryDateFulfill.text = date.toString()
+                txtTrashStationHistoryDateFulfill.text = transaction.timestamp
                 txtTrashStationHistoryPoints.text = transaction.reward.toString()
                 txtTrashStationHistoryAmount.text = transaction.trash?.paper.toString()
                 txtTrashStationHistoryType.text = "paper"

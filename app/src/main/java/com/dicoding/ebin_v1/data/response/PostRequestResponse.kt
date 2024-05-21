@@ -1,30 +1,20 @@
 package com.dicoding.ebin_v1.data.response
 
-import kotlinx.parcelize.Parcelize
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-@Parcelize
-data class GetAllRequestResponse(
-
-	@field:SerializedName("GetAllRequestResponse")
-	val getAllRequestResponse: List<GetAllRequestResponseItem?>? = null
-) : Parcelable
-
-@Parcelize
-data class GetAllRequestResponseItem(
+data class PostRequestResponse(
 
 	@field:SerializedName("reward")
 	val reward: Int? = null,
 
 	@field:SerializedName("senderID")
-	val senderID: String? = null,
-
-	@field:SerializedName("receiverID")
-	val receiverID: String? = null,
+	val senderID: Any? = null,
 
 	@field:SerializedName("address")
 	val address: String? = null,
+
+	@field:SerializedName("receiverID")
+	val receiverID: String? = null,
 
 	@field:SerializedName("start")
 	val start: String? = null,
@@ -33,7 +23,7 @@ data class GetAllRequestResponseItem(
 	val description: String? = null,
 
 	@field:SerializedName("end")
-	val end: String? = null,
+	val end: Any? = null,
 
 	@field:SerializedName("id")
 	val id: String? = null,
@@ -43,4 +33,4 @@ data class GetAllRequestResponseItem(
 
 	@field:SerializedName("status")
 	val status: String? = null
-) : Parcelable
+)

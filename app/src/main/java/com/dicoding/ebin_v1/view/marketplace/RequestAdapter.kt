@@ -14,10 +14,10 @@ import com.dicoding.ebin_v1.view.requestDetail.RequestDetailActivity
 class RequestAdapter : ListAdapter<GetAllRequestResponseItem, RequestAdapter.RequestViewHolder>(DIFF_CALLBACK) {
     class RequestViewHolder(private val binding: ItemRequestsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(requests: GetAllRequestResponseItem) {
-            binding.txtRequestOwner.text = requests.senderID
+            binding.txtRequestOwner.text = requests.receiverID
             binding.txtRequestAmount.text = requests.title
             binding.txtRequestType.text = ""
-            binding.txtRequestRewardPointPlaceholder.text =requests.reward.toString()
+            binding.txtRequestRewardPointPlaceholder.text = requests.reward.toString()
 
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, RequestDetailActivity::class.java)

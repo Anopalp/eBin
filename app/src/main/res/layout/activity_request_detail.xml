@@ -249,16 +249,18 @@
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:text="Take Request"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
-        android:id="@+id/btn_delete"
+        android:id="@+id/btn_detail_request_edit_request"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:text="Delete"
+        android:text="Edit Request"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_detail_request_take_request" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

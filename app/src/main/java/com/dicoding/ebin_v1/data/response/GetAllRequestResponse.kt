@@ -18,13 +18,13 @@ data class GetAllRequestResponseItem(
 	val reward: Int? = null,
 
 	@field:SerializedName("senderID")
-	val senderID: String? = null,
-
-	@field:SerializedName("receiverID")
-	val receiverID: String? = null,
+	val senderID: SenderID? = null,
 
 	@field:SerializedName("address")
 	val address: String? = null,
+
+	@field:SerializedName("receiverID")
+	val receiverID: ReceiverID? = null,
 
 	@field:SerializedName("start")
 	val start: String? = null,
@@ -43,4 +43,24 @@ data class GetAllRequestResponseItem(
 
 	@field:SerializedName("status")
 	val status: String? = null
+) : Parcelable
+
+@Parcelize
+data class ReceiverID(
+
+	@field:SerializedName("id")
+	val id: String? = null,
+
+	@field:SerializedName("username")
+	val username: String? = null
+) : Parcelable
+
+@Parcelize
+data class SenderID(
+
+	@field:SerializedName("id")
+	val id: String? = null,
+
+	@field:SerializedName("username")
+	val username: String? = null
 ) : Parcelable

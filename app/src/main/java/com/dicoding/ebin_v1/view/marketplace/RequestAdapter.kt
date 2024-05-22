@@ -14,7 +14,7 @@ import com.dicoding.ebin_v1.view.requestDetail.RequestDetailActivity
 class RequestAdapter : ListAdapter<GetAllRequestResponseItem, RequestAdapter.RequestViewHolder>(DIFF_CALLBACK) {
     class RequestViewHolder(private val binding: ItemRequestsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(requests: GetAllRequestResponseItem) {
-            binding.txtRequestOwner.text = requests.receiverID
+            binding.txtRequestOwner.text = requests.receiverID!!.username
             binding.txtRequestAmount.text = requests.title
             binding.txtRequestType.text = ""
             binding.txtRequestRewardPointPlaceholder.text = requests.reward.toString()

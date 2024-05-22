@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.editRequest.EditRequestActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ab_edit_request_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mt_edit_request_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:title="Edit Request"
+            app:navigationIcon="@drawable/back_navigation_logo" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_layout_edit_request_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="What trash do you need?"
+        android:layout_marginHorizontal="33dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ab_edit_request_app_bar_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_input_edit_text_edit_request_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_edit_request_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Only paper and plastic trash is valid"
+        android:textSize="12sp"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_input_layout_edit_request_type" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_layout_edit_request_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="How many do you need?"
+        android:layout_marginHorizontal="33dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_input_layout_edit_request_type">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_input_edit_text_edit_request_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_layout_edit_request_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please give more desription"
+        android:layout_marginHorizontal="33dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_input_layout_edit_request_amount">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_input_edit_text_edit_request_description"
+            android:layout_width="match_parent"
+            android:gravity="top"
+            android:layout_height="160dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_layout_edit_request_destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Where should the trash be sent?"
+        android:layout_marginHorizontal="33dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_input_layout_edit_request_description">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_input_edit_text_edit_request_destination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_layout_edit_request_reward"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="What is the reward?"
+        android:layout_marginHorizontal="33dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_input_layout_edit_request_destination">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_input_edit_text_edit_request_reward"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_edit_request"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:text="Edit Request"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

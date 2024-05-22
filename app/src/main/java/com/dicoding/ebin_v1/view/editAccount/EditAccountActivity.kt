@@ -17,7 +17,6 @@ import retrofit2.Response
 class EditAccountActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditAccountBinding
-
     private lateinit var detailAccount: GetAllUsersResponseItem
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -12,6 +12,7 @@ import com.dicoding.ebin_v1.data.response.GetAllRequestResponseItem
 import com.dicoding.ebin_v1.data.response.GetAllUsersResponseItem
 import com.dicoding.ebin_v1.data.retrofit.ApiConfig
 import com.dicoding.ebin_v1.databinding.ActivityRequestDetailBinding
+import com.dicoding.ebin_v1.view.editRequest.EditRequestActivity
 import com.dicoding.ebin_v1.view.welcomePage.WelcomePageActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -27,7 +28,7 @@ class RequestDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRequestDetailBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var requestDetailViewModel: RequestDetailViewModel
-    private lateinit var currentUserData: GetAllUsersResponseItem
+    private lateinit var detailRequest: GetAllRequestResponseItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,7 @@ class RequestDetailActivity : AppCompatActivity() {
 
         requestDetailViewModel = ViewModelProvider(this).get(RequestDetailViewModel::class.java)
 
-        val detailRequest = (intent.getParcelableExtra(KEY_DETAIL) as GetAllRequestResponseItem?)!!
+        detailRequest = (intent.getParcelableExtra(KEY_DETAIL) as GetAllRequestResponseItem?)!!
         setDetailData(detailRequest)
 
         setButtonDisplay(detailRequest)
@@ -68,6 +69,16 @@ class RequestDetailActivity : AppCompatActivity() {
     private fun setAction() {
         binding.mtDetailRequestToolBar.setNavigationOnClickListener {
             finish()
+        }
+
+        binding.btnDetailRequestEditRequest.setOnClickListener {
+            val intent = Intent(this, EditRequestActivity::class.java)
+            intent.putExtra(EditRequestActivity.KEY_DETAIL, detailRequest)
+            startActivity(intent)
+        }
+
+        binding.btnDetailRequestTakeRequest.setOnClickListener {
+
         }
     }
 

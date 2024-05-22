@@ -50,7 +50,6 @@ class AccountActivity : AppCompatActivity() {
         }
 
         setAction()
-//        getUser()
 
     }
 

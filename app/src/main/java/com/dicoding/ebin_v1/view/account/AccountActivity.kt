@@ -15,6 +15,7 @@ import com.dicoding.ebin_v1.databinding.ActivityAccountBinding
 import com.dicoding.ebin_v1.view.editAccount.EditAccountActivity
 import com.dicoding.ebin_v1.view.homepage.HomepageActivity
 import com.dicoding.ebin_v1.view.qrCode.QRCodeActivity
+import com.dicoding.ebin_v1.view.redeemGuide.RedeemGuideActivity
 import com.dicoding.ebin_v1.view.transactionHistory.TransactionHistoryActivity
 import com.dicoding.ebin_v1.view.welcomePage.WelcomePageActivity
 import com.google.firebase.Firebase
@@ -63,6 +64,10 @@ class AccountActivity : AppCompatActivity() {
     }
 
     private fun setAction() {
+        binding.clAccountPointsContainer.setOnClickListener {
+            startActivity(Intent(this, RedeemGuideActivity::class.java))
+        }
+
         binding.mtAccountToolBar.setNavigationOnClickListener {
             finish()
         }

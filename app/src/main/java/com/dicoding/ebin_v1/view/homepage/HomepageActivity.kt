@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -57,6 +58,17 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding.svSearchView.setupWithSearchBar(binding.sbSearchBar)
 
+        binding.svSearchView
+            .editText
+            .setOnEditorActionListener { _, actionId, _ ->
+                binding.svSearchView.hide()
+                val searchText = binding.svSearchView.text.toString()
+                if (searchText != "") {
+                    homepageViewModel.getTrashStation(searchText)
+                }
+                false
+            }
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.hpBottomSheet)
@@ -84,6 +96,9 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         homepageViewModel.getAllTrashStations()
 
         homepageViewModel.response.observe(this) { response ->
+            if (response.isEmpty()) {
+                Toast.makeText(this, "No Data", Toast.LENGTH_LONG).show()
+            }
             setListAdapter(response)
         }
     }

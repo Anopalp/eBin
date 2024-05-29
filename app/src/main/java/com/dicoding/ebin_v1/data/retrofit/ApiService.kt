@@ -15,6 +15,11 @@ interface ApiService {
     @GET("trash-stations")
     fun getAllTrashStations() : Call<List<TrashStationsResponseItem>>
 
+    @GET("trash-stations/{id}")
+    fun getTrashstation(
+        @Path("id") id: String
+    ) : Call<TrashStationsResponseItem>
+
     @GET("users")
     fun getAllUsers() : Call<List<GetAllUsersResponseItem>>
 

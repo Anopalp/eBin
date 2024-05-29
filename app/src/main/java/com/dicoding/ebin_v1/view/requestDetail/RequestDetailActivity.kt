@@ -44,7 +44,24 @@ class RequestDetailActivity : AppCompatActivity() {
         setDetailData(detailRequest)
 
         setButtonDisplay(detailRequest)
-        setAction()
+        setDetailActionDescription(detailRequest)
+        setAction(detailRequest)
+
+        requestDetailViewModel.requestTaken.observe(this) {
+            if (it) {
+                binding.btnDetailRequestTakeRequest.visibility = View.GONE
+                binding.btnDetailRequestRequestDelivery.visibility = View.VISIBLE
+                binding.clRequestTakenDescription.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun setDetailActionDescription(detailRequest: GetAllRequestResponseItem) {
+        if ((detailRequest.receiverID!!.id == auth.currentUser!!.uid) && (detailRequest.status == "taken")) {
+            binding.btnDetailRequestTakeRequest.visibility = View.GONE
+            binding.btnDetailRequestRequestDelivery.visibility = View.VISIBLE
+            binding.clRequestTakenDescription.visibility = View.VISIBLE
+        }
     }
 
     private fun setButtonDisplay(detailRequest: GetAllRequestResponseItem) {
@@ -66,7 +83,7 @@ class RequestDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setAction() {
+    private fun setAction(detailRequest: GetAllRequestResponseItem) {
         binding.mtDetailRequestToolBar.setNavigationOnClickListener {
             finish()
         }
@@ -78,7 +95,9 @@ class RequestDetailActivity : AppCompatActivity() {
         }
 
         binding.btnDetailRequestTakeRequest.setOnClickListener {
-
+            val senderId = auth.uid
+            Log.d("DEBUG", "reqId: ${detailRequest.id}\nsenderId: ${senderId}")
+            requestDetailViewModel.updateStatus(detailRequest.id!! , senderId!!, "taken")
         }
     }
 

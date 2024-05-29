@@ -37,7 +37,7 @@ class TrashStationDetailActivity : AppCompatActivity() {
     private fun setDetailData(detailTrashStation: TrashStationsResponseItem) {
         binding.apply {
             mtDetailToolBar.title = "Trash Station " + detailTrashStation.id
-            txtDetailAddressDescription.text = "Address Description"
+            txtDetailAddressDescription.text = detailTrashStation.address
             txtDetailOpenHoursDescription.text = "${detailTrashStation.openHours?.openTime}.00 - ${detailTrashStation.openHours?.closeTime}.00"
             txtDetailCapacityDescription.text = "${detailTrashStation.capacity.toString()}%"
         }

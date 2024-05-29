@@ -1,6 +1,7 @@
 package com.dicoding.ebin_v1.data.retrofit
 
 import com.dicoding.ebin_v1.data.entity.RequestDetail
+import com.dicoding.ebin_v1.data.entity.UpdateBody
 import com.dicoding.ebin_v1.data.entity.UserDetail
 import com.dicoding.ebin_v1.data.response.GetAllRequestResponseItem
 import com.dicoding.ebin_v1.data.response.GetAllUsersResponseItem
@@ -8,6 +9,7 @@ import com.dicoding.ebin_v1.data.response.PostRequestResponse
 import com.dicoding.ebin_v1.data.response.SignupResponse
 import com.dicoding.ebin_v1.data.response.TrashStationsResponse
 import com.dicoding.ebin_v1.data.response.TrashStationsResponseItem
+import com.dicoding.ebin_v1.data.response.UpdateRequestStatusResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -37,4 +39,10 @@ interface ApiService {
 
     @POST("requests")
     fun postRequest(@Body requestDetail: RequestDetail): Call<PostRequestResponse>
+
+    @PUT("requests/{id}")
+    fun updateRequestStatus(
+        @Path("id") id: String,
+        @Body updateBody: UpdateBody
+    ) : Call<UpdateRequestStatusResponse>
 }

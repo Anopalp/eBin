@@ -1,33 +1,24 @@
 package com.dicoding.ebin_v1.data.response
 
+import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class TrashStationsResponse(
 
 	@field:SerializedName("TrashStationsResponse")
 	val trashStationsResponse: List<TrashStationsResponseItem?>? = null
-)
-
-@Parcelize
-data class OpenHours(
-
-	@field:SerializedName("closeTime")
-	val closeTime: Int? = null,
-
-	@field:SerializedName("openTime")
-	val openTime: Int? = null
 ) : Parcelable
 
 @Parcelize
 data class Location(
 
 	@field:SerializedName("latitude")
-	val latitude: Int? = null,
+	val latitude: Float? = null,
 
 	@field:SerializedName("longitude")
-	val longitude: Int? = null
+	val longitude: Float? = null
 ) : Parcelable
 
 @Parcelize
@@ -35,6 +26,9 @@ data class TrashStationsResponseItem(
 
 	@field:SerializedName("openHours")
 	val openHours: OpenHours? = null,
+
+	@field:SerializedName("address")
+	val address: String? = null,
 
 	@field:SerializedName("available")
 	val available: Boolean? = null,
@@ -47,4 +41,14 @@ data class TrashStationsResponseItem(
 
 	@field:SerializedName("capacity")
 	val capacity: Int? = null
+) : Parcelable
+
+@Parcelize
+data class OpenHours(
+
+	@field:SerializedName("closeTime")
+	val closeTime: Int? = null,
+
+	@field:SerializedName("openTime")
+	val openTime: Int? = null
 ) : Parcelable

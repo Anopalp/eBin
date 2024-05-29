@@ -194,6 +194,11 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         btnAccount.layoutParams = paramsAccount
     }
 
+    override fun onResume() {
+        super.onResume()
+        homepageViewModel.getAllTrashStations()
+    }
+
     companion object {
         val dummyTrashStation: List<TrashStation> = arrayListOf(
             TrashStation("A", "Luthfi", 75.0,"Jl. Ganesa 7-11, Lb. Siliwangi, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132", "8.00 - 16.00",-6.89329641160456, 107.61119012530456),

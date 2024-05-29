@@ -16,7 +16,6 @@ class TrashStationAdapter : ListAdapter<TrashStationsResponseItem, TrashStationA
         fun bind(trashStation: TrashStationsResponseItem) {
             binding.txtListTrashStationLogo.text = trashStation.id
             binding.txtListTrashStationId.text = trashStation.id
-            binding.txtListTrashStationDistance.text = "200m"
 
             if (trashStation.available!!) {
                 binding.txtListTrashStationAvailability.text = "Available"

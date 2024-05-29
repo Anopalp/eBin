@@ -77,55 +77,11 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_detail_distance_title_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@id/txt_detail_address_description"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/iv_detail_distance_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/distance_logo"
-            android:layout_marginStart="22dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <TextView
-            android:id="@+id/txt_detail_distance_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Distance"
-            android:textSize="22sp"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_marginStart="15dp"
-            app:layout_constraintStart_toEndOf="@id/iv_detail_distance_logo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/txt_detail_distance_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="500m"
-        android:textSize="14sp"
-        android:textColor="?attr/colorOnSurfaceVariant"
-        android:layout_marginHorizontal="61dp"
-        app:layout_constraintTop_toBottomOf="@id/cl_detail_distance_title_container"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_detail_open_hours_title_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@id/txt_detail_distance_description"
+        app:layout_constraintTop_toBottomOf="@id/txt_detail_address_description"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
@@ -208,35 +164,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ImageView
-        android:id="@+id/iv_maps_image_placeholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/maps_image"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_detail_capacity_description" />
-    
-    <Button
-        android:id="@+id/btn_detail_set_navigation"
-        android:layout_width="382dp"
-        android:layout_height="wrap_content"
-        android:text="Set Navigation"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_maps_image_placeholder" />
-
     <Button
         android:id="@+id/btn_detail_show_qr_code"
         android:layout_width="382dp"
         android:layout_height="wrap_content"
         android:text="Show QR Code"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_detail_set_navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
         style="@style/Widget.Material3.Button.OutlinedButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,11 +10,15 @@ import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.Requests
 import com.dicoding.ebin_v1.data.response.GetAllRequestResponseItem
 import com.dicoding.ebin_v1.databinding.FragmentMyRequestBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class MyRequestFragment : Fragment() {
 
     private lateinit var binding: FragmentMyRequestBinding
     private lateinit var requests: List<GetAllRequestResponseItem>
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +31,8 @@ class MyRequestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        auth = Firebase.auth
+
         val requestedLayoutManager = LinearLayoutManager(requireContext())
         binding.rvMyRequestsList.layoutManager = requestedLayoutManager
 
@@ -36,9 +42,15 @@ class MyRequestFragment : Fragment() {
         arguments?.let {
             requests = it.getParcelableArrayList<GetAllRequestResponseItem>("REQUEST_LIST") ?: emptyList()
 
+            val requestedList = requests.filter { it.receiverID?.id ==  auth.uid}
             val requestedAdapter = RequestAdapter()
-            requestedAdapter.submitList(requests)
+            requestedAdapter.submitList(requestedList)
             binding.rvMyRequestsList.adapter = requestedAdapter
+
+            val requestTakenList = requests.filter { it.senderID?.id == auth.uid }
+            val requestTakenAdapter = RequestAdapter()
+            requestTakenAdapter.submitList(requestTakenList)
+            binding.rvRequestTaken.adapter = requestTakenAdapter
         }
 
 

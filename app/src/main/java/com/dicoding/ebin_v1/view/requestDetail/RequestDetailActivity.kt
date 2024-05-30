@@ -13,6 +13,7 @@ import com.dicoding.ebin_v1.data.response.GetAllUsersResponseItem
 import com.dicoding.ebin_v1.data.retrofit.ApiConfig
 import com.dicoding.ebin_v1.databinding.ActivityRequestDetailBinding
 import com.dicoding.ebin_v1.view.editRequest.EditRequestActivity
+import com.dicoding.ebin_v1.view.requestDelivery.RequestDeliveryActivity
 import com.dicoding.ebin_v1.view.welcomePage.WelcomePageActivity
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.Firebase
@@ -131,6 +132,7 @@ class RequestDetailActivity : AppCompatActivity() {
 
                 val senderId = auth.uid
                 requestDetailViewModel.updateStatus(detailRequest.id!!, senderId!!, "delivery")
+                startActivity(Intent(this, RequestDeliveryActivity::class.java))
             }
         }
     }

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.requestDelivery.RequestDeliveryActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ab_delivery_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/ctl_collapsing_toolbar_layout"
+            style="?attr/collapsingToolbarLayoutMediumStyle"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/collapsingToolbarLayoutMediumSize">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/mt_delivery_tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="0dp"
+                app:title="Title"
+                app:navigationIcon="@drawable/back_navigation_logo" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/iv_image_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/status_pickup"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ab_delivery_app_bar_layout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_request_status_description"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="15dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_request_taken"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_image_status">
+
+        <TextView
+            android:id="@+id/txt_request_status_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wait fo pick up"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_request_status_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick up at"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_request_status_title" />
+
+        <TextView
+            android:id="@+id/txt_request_status_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mon X"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@+id/txt_request_status_description"
+            app:layout_constraintTop_toBottomOf="@+id/txt_request_status_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_delivery_item_requester_container"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_detail_item_container"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_request_status_description">
+
+        <ImageView
+            android:id="@+id/delivery_item_requester_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/person_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_requester_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Requester"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_requester_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_requester_placeholder"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="luthfi"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_requester_image"
+            app:layout_constraintTop_toBottomOf="@id/delivery_item_requester_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_delivery_item_description_container"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_detail_item_container"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_delivery_item_requester_container">
+
+        <ImageView
+            android:id="@+id/delivery_item_description_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/description_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_description_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_description_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_description_placeholder"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="Saya membutuhkan 25 botol plastik untuk tugas sekolah. Secepatnya ya. Terima kasih"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_description_image"
+            app:layout_constraintTop_toBottomOf="@id/delivery_item_description_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_delivery_item_address_container"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_detail_item_container"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_delivery_item_description_container">
+
+        <ImageView
+            android:id="@+id/delivery_item_address_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/location_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_address_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_address_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_address_placeholder"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1, Sayang, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_address_image"
+            app:layout_constraintTop_toBottomOf="@id/delivery_item_address_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_delivery_item_reward_container"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_detail_item_container"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_delivery_item_address_container">
+
+        <ImageView
+            android:id="@+id/delivery_item_reward_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/money_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_reward_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reward"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_reward_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_reward_placeholder"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="15 points"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_reward_image"
+            app:layout_constraintTop_toBottomOf="@id/delivery_item_reward_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_delivery_item_date_container"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_detail_item_container"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_delivery_item_reward_container">
+
+        <ImageView
+            android:id="@+id/delivery_item_date_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/date_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_date_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date Added"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_date_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_item_date_placeholder"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="Saturday, 13 April 2024 "
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintStart_toEndOf="@id/delivery_item_date_image"
+            app:layout_constraintTop_toBottomOf="@id/delivery_item_date_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

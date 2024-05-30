@@ -18,6 +18,9 @@
         android:theme="@style/Theme.EBin_v1"
         tools:targetApi="31">
         <activity
+            android:name=".view.requestDelivery.RequestDeliveryActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.redeemGuide.RedeemGuideActivity"
             android:exported="false" />
         <activity

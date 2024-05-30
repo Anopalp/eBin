@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.entity.Requests
@@ -64,17 +65,32 @@ class RequestDetailActivity : AppCompatActivity() {
     }
 
     private fun setButtonDisplay(detailRequest: GetAllRequestResponseItem) {
-        if (detailRequest.status == "delivery" || detailRequest.status == "on hold" || detailRequest.status == "end") {
-            val intent = Intent(this, RequestDeliveryActivity::class.java)
-            intent.putExtra(RequestDeliveryActivity.KEY_DETAIL, detailRequest)
-            startActivity(intent)
-            finish()
-        }
-
         if (detailRequest.receiverID!!.id == auth.currentUser!!.uid) {
-            binding.btnDetailRequestEditRequest.visibility = View.VISIBLE
-            binding.btnDetailRequestTakeRequest.visibility = View.GONE
+            if (detailRequest.status == "initial") {
+                binding.btnDetailRequestEditRequest.visibility = View.VISIBLE
+                binding.btnDetailRequestTakeRequest.visibility = View.GONE
+                binding.clRequestTakenDescription.visibility = View.GONE
+            }
+
+            if (detailRequest.status == "taken" || detailRequest.status == "delivery") {
+                binding.btnDetailRequestEditRequest.visibility = View.GONE
+                binding.clRequestTakenDescription.visibility = View.VISIBLE
+                binding.txtRequestTakenTitle.text = "The request has been taken"
+            }
+
+            if (detailRequest.status == "on hold") {
+                binding.btnDetailRequestEditRequest.visibility = View.GONE
+                binding.clRequestTakenDescription.visibility = View.GONE
+                binding.btnDetailRequestReport.visibility = View.VISIBLE
+            }
         } else {
+            if (detailRequest.status == "delivery" || detailRequest.status == "on hold" || detailRequest.status == "end") {
+                val intent = Intent(this, RequestDeliveryActivity::class.java)
+                intent.putExtra(RequestDeliveryActivity.KEY_DETAIL, detailRequest)
+                startActivity(intent)
+                finish()
+            }
+
             if (detailRequest.status == "taken") {
                 binding.btnDetailRequestTakeRequest.visibility = View.GONE
                 binding.btnDetailRequestRequestDelivery.visibility = View.VISIBLE
@@ -139,6 +155,15 @@ class RequestDetailActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+        }
+
+        binding.btnDetailRequestReport.setOnClickListener {
+            val senderId = auth.uid
+            requestDetailViewModel.updateStatus(detailRequest.id!!, senderId!!, "returning")
+
+            binding.clRequestTakenDescription.visibility = View.VISIBLE
+            binding.txtRequestTakenTitle.text = "Sending back the trash"
+            binding.btnDetailRequestReport.visibility = View.GONE
         }
     }
 

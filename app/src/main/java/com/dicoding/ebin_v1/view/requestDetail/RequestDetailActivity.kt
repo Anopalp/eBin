@@ -14,13 +14,18 @@ import com.dicoding.ebin_v1.data.retrofit.ApiConfig
 import com.dicoding.ebin_v1.databinding.ActivityRequestDetailBinding
 import com.dicoding.ebin_v1.view.editRequest.EditRequestActivity
 import com.dicoding.ebin_v1.view.welcomePage.WelcomePageActivity
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
 import java.util.concurrent.TimeUnit
 
 class RequestDetailActivity : AppCompatActivity() {
@@ -44,7 +49,8 @@ class RequestDetailActivity : AppCompatActivity() {
         setDetailData(detailRequest)
 
         setButtonDisplay(detailRequest)
-        setDetailActionDescription(detailRequest)
+        Log.d("REQUEST STATUS", detailRequest.status!!)
+//        setDetailActionDescription(detailRequest)
         setAction(detailRequest)
 
         requestDetailViewModel.requestTaken.observe(this) {
@@ -56,21 +62,25 @@ class RequestDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setDetailActionDescription(detailRequest: GetAllRequestResponseItem) {
-        if ((detailRequest.receiverID!!.id == auth.currentUser!!.uid) && (detailRequest.status == "taken")) {
-            binding.btnDetailRequestTakeRequest.visibility = View.GONE
-            binding.btnDetailRequestRequestDelivery.visibility = View.VISIBLE
-            binding.clRequestTakenDescription.visibility = View.VISIBLE
-        }
-    }
+//    private fun setDetailActionDescription(detailRequest: GetAllRequestResponseItem) {
+//        if ((detailRequest.receiverID!!.id == auth.currentUser!!.uid) && (detailRequest.status == "taken")) {
+//
+//        }
+//    }
 
     private fun setButtonDisplay(detailRequest: GetAllRequestResponseItem) {
         if (detailRequest.receiverID!!.id == auth.currentUser!!.uid) {
             binding.btnDetailRequestEditRequest.visibility = View.VISIBLE
             binding.btnDetailRequestTakeRequest.visibility = View.GONE
         } else {
-            binding.btnDetailRequestEditRequest.visibility = View.GONE
-            binding.btnDetailRequestTakeRequest.visibility = View.VISIBLE
+            if (detailRequest.status == "taken") {
+                binding.btnDetailRequestTakeRequest.visibility = View.GONE
+                binding.btnDetailRequestRequestDelivery.visibility = View.VISIBLE
+                binding.clRequestTakenDescription.visibility = View.VISIBLE
+            } else {
+                binding.btnDetailRequestEditRequest.visibility = View.GONE
+                binding.btnDetailRequestTakeRequest.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -98,6 +108,30 @@ class RequestDetailActivity : AppCompatActivity() {
             val senderId = auth.uid
             Log.d("DEBUG", "reqId: ${detailRequest.id}\nsenderId: ${senderId}")
             requestDetailViewModel.updateStatus(detailRequest.id!! , senderId!!, "taken")
+        }
+
+        binding.btnDetailRequestRequestDelivery.setOnClickListener {
+            val datePicker =
+                MaterialDatePicker.Builder.datePicker()
+                    .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                    .setTitleText("Select date")
+                    .build()
+
+            datePicker.show(supportFragmentManager, "tag")
+
+            datePicker.addOnPositiveButtonClickListener { selectedDate ->
+                Log.d("SELECTED DATE 1", selectedDate.toString())
+                val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+                calendar.timeInMillis = selectedDate
+
+                val format = SimpleDateFormat("EEE MMM dd yyyy", Locale.getDefault())
+                val formattedDate = format.format(calendar.time)
+
+                Log.d("SELECTED DATE 2", formattedDate.toString())
+
+                val senderId = auth.uid
+                requestDetailViewModel.updateStatus(detailRequest.id!!, senderId!!, "delivery")
+            }
         }
     }
 

@@ -1,7 +1,9 @@
 package com.dicoding.ebin_v1.view.requestDelivery
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -33,16 +35,46 @@ class RequestDeliveryActivity : AppCompatActivity() {
 
         setDetailRequest(detailRequest)
         setAction(detailRequest)
+        checkStatus(detailRequest)
 
         requestDeliveryViewModel.response.observe(this) {
             setStatus(it!!)
         }
     }
 
+    private fun checkStatus(detailRequest: GetAllRequestResponseItem) {
+        if (detailRequest.status == "end") {
+            AlertDialog.Builder(this).apply {
+                setTitle("Congratulations!")
+                setMessage("You have been rewarded " + detailRequest.reward + " points")
+                setPositiveButton("Close") { _, _ ->
+                    finish()
+                }
+                create()
+                show()
+            }
+        }
+    }
+
     private fun setStatus(response: UpdateRequestStatusResponse) {
         when (response.status) {
-            "on hold" -> binding.ivImageStatus.setImageResource(R.drawable.status_delivered)
-            "end" -> binding.ivImageStatus.setImageResource(R.drawable.status_completed)
+            "on hold" -> {
+                binding.ivImageStatus.setImageResource(R.drawable.status_delivered)
+                binding.txtRequestStatusTitle.text = "The Request is Delivered"
+            }
+            "end" -> {
+                binding.ivImageStatus.setImageResource(R.drawable.status_completed)
+                binding.txtRequestStatusTitle.text = "The Request Has Been Completed"
+                AlertDialog.Builder(this).apply {
+                    setTitle("Congratulations!")
+                    setMessage("You have been rewarded " + response.reward + " points")
+                    setPositiveButton("Close") { _, _ ->
+                        finish()
+                    }
+                    create()
+                    show()
+                }
+            }
         }
     }
 
@@ -81,6 +113,10 @@ class RequestDeliveryActivity : AppCompatActivity() {
             val senderId = auth.uid
             if (detailRequest.status == "delivery") {
                 requestDeliveryViewModel.updateStatus(detailRequest.id!!, senderId!!, "on hold")
+            }
+
+            if (detailRequest.status == "on hold") {
+                requestDeliveryViewModel.updateStatus(detailRequest.id!!, senderId!!, "end")
             }
         }
     }

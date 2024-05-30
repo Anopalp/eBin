@@ -64,7 +64,7 @@ class RequestDetailActivity : AppCompatActivity() {
     }
 
     private fun setButtonDisplay(detailRequest: GetAllRequestResponseItem) {
-        if (detailRequest.status == "delivery" || detailRequest.status == "on hold") {
+        if (detailRequest.status == "delivery" || detailRequest.status == "on hold" || detailRequest.status == "end") {
             val intent = Intent(this, RequestDeliveryActivity::class.java)
             intent.putExtra(RequestDeliveryActivity.KEY_DETAIL, detailRequest)
             startActivity(intent)

@@ -32,13 +32,30 @@ class RequestsFragment : Fragment() {
 
         arguments?.let {
             requests = it.getParcelableArrayList<GetAllRequestResponseItem>("REQUEST_LIST") ?: emptyList()
-            val filteredRequest = requests.filter { it.status != "end" }
-            val adapter = RequestAdapter()
-            adapter.submitList(filteredRequest)
-            binding.rvAllRequestsLists.adapter = adapter
         }
 
+        val filteredRequest = requests.filter { it.status != "end" }
+        val adapter = RequestAdapter()
+        adapter.submitList(filteredRequest)
+        binding.rvAllRequestsLists.adapter = adapter
 
+        binding.svSearchView.setupWithSearchBar(binding.sbAllRequestsSearchBar)
+
+        binding.svSearchView
+            .editText
+            .setOnEditorActionListener { _, actionId, _ ->
+                binding.svSearchView.hide()
+                val searchText = binding.svSearchView.text.toString()
+                if (searchText != "") {
+                    val searchRequest = filteredRequest.filter {
+                        it.title?.contains(searchText, ignoreCase = true) ?: false
+                    }
+                    adapter.submitList(searchRequest)
+                } else {
+                    adapter.submitList(filteredRequest)
+                }
+                false
+            }
     }
 
     companion object {

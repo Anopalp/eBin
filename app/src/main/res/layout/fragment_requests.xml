@@ -15,6 +15,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <com.google.android.material.search.SearchView
+        android:id="@+id/sv_search_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Search trash type"
+        app:layout_anchor="@id/sb_all_requests_search_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_all_requests_lists"
         android:layout_width="wrap_content"

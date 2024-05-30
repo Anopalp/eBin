@@ -56,10 +56,6 @@ class MarketplaceActivity : AppCompatActivity() {
         marketplaceViewModel.getAllRequests()
     }
 
-    private fun setListAdapter(requests: List<GetAllRequestResponseItem>) {
-
-    }
-
     private fun checkSession(auth: FirebaseAuth) {
         val firebaseUser = auth.currentUser
 

@@ -63,13 +63,14 @@ class RequestDetailActivity : AppCompatActivity() {
         }
     }
 
-//    private fun setDetailActionDescription(detailRequest: GetAllRequestResponseItem) {
-//        if ((detailRequest.receiverID!!.id == auth.currentUser!!.uid) && (detailRequest.status == "taken")) {
-//
-//        }
-//    }
-
     private fun setButtonDisplay(detailRequest: GetAllRequestResponseItem) {
+        if (detailRequest.status == "delivery" || detailRequest.status == "on hold") {
+            val intent = Intent(this, RequestDeliveryActivity::class.java)
+            intent.putExtra(RequestDeliveryActivity.KEY_DETAIL, detailRequest)
+            startActivity(intent)
+            finish()
+        }
+
         if (detailRequest.receiverID!!.id == auth.currentUser!!.uid) {
             binding.btnDetailRequestEditRequest.visibility = View.VISIBLE
             binding.btnDetailRequestTakeRequest.visibility = View.GONE
@@ -132,7 +133,11 @@ class RequestDetailActivity : AppCompatActivity() {
 
                 val senderId = auth.uid
                 requestDetailViewModel.updateStatus(detailRequest.id!!, senderId!!, "delivery")
-                startActivity(Intent(this, RequestDeliveryActivity::class.java))
+//                startActivity(Intent(this, RequestDeliveryActivity::class.java))
+                val intent = Intent(this, RequestDeliveryActivity::class.java)
+                intent.putExtra(RequestDeliveryActivity.KEY_DETAIL, detailRequest)
+                startActivity(intent)
+                finish()
             }
         }
     }

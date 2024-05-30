@@ -1,8 +1,10 @@
 package com.dicoding.ebin_v1.data.retrofit
 
+import com.dicoding.ebin_v1.data.entity.EditRequest
 import com.dicoding.ebin_v1.data.entity.RequestDetail
 import com.dicoding.ebin_v1.data.entity.UpdateBody
 import com.dicoding.ebin_v1.data.entity.UserDetail
+import com.dicoding.ebin_v1.data.response.EditRequestResponse
 import com.dicoding.ebin_v1.data.response.GetAllRequestResponseItem
 import com.dicoding.ebin_v1.data.response.GetAllUsersResponseItem
 import com.dicoding.ebin_v1.data.response.PostRequestResponse
@@ -45,4 +47,10 @@ interface ApiService {
         @Path("id") id: String,
         @Body updateBody: UpdateBody
     ) : Call<UpdateRequestStatusResponse>
+
+    @PUT("requests/{id}")
+    fun editRequest(
+        @Path("id") id: String,
+        @Body editRequest: EditRequest
+    ) : Call<EditRequestResponse>
 }

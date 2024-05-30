@@ -120,6 +120,7 @@ class RequestDetailActivity : AppCompatActivity() {
             val intent = Intent(this, EditRequestActivity::class.java)
             intent.putExtra(EditRequestActivity.KEY_DETAIL, detailRequest)
             startActivity(intent)
+            finish()
         }
 
         binding.btnDetailRequestTakeRequest.setOnClickListener {

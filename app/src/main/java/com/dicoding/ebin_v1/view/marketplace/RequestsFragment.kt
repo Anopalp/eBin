@@ -32,8 +32,9 @@ class RequestsFragment : Fragment() {
 
         arguments?.let {
             requests = it.getParcelableArrayList<GetAllRequestResponseItem>("REQUEST_LIST") ?: emptyList()
+            val filteredRequest = requests.filter { it.status != "end" }
             val adapter = RequestAdapter()
-            adapter.submitList(requests)
+            adapter.submitList(filteredRequest)
             binding.rvAllRequestsLists.adapter = adapter
         }
 

@@ -16,6 +16,9 @@ class RequestDeliveryViewModel() : ViewModel() {
     private val _response = MutableLiveData<UpdateRequestStatusResponse?>()
     val response: LiveData<UpdateRequestStatusResponse?> = _response
 
+    private val _status = MutableLiveData<String?>()
+    val status: LiveData<String?> = _status
+
     fun updateStatus(tid: String, uid: String, status: String) {
         try {
             Log.d("VERIFY", "tid: $tid\nuid: $uid\nstatus: $status")
@@ -30,6 +33,7 @@ class RequestDeliveryViewModel() : ViewModel() {
                         val responseBody = response.body()
                         if (responseBody != null) {
                             _response.value = responseBody
+                            _status.value = responseBody.status
                             Log.d("UPDATE STATUS SUCCESS", _response.value.toString())
                         } else {
                             Log.e("UPDATE STATUS FAILURE", "Response body is null")

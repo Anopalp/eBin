@@ -19,8 +19,8 @@ class RequestHistoryAdapter : ListAdapter<RequestItem, RequestHistoryAdapter.Req
             binding.apply {
                 txtRequestHistoryDateFulfill.text = requests.end
                 txtRequestHistoryPoints.text = requests.reward.toString()
-                txtRequestHistoryAmount.text = "null"
-                txtRequestHistoryType.text = "null"
+                txtRequestHistoryAmount.text = requests.title
+                txtRequestHistoryType.text = ""
             }
         }
     }

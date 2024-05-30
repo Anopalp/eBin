@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.ebin_v1.R
 import com.dicoding.ebin_v1.data.response.GetAllUsersResponseItem
 import com.dicoding.ebin_v1.databinding.ActivityTransactionHistoryBinding
+import com.dicoding.ebin_v1.view.account.AccountActivity
 import com.dicoding.ebin_v1.view.editAccount.EditAccountActivity
 import com.dicoding.ebin_v1.view.marketplace.SectionsPagerAdapter
 import com.google.android.material.tabs.TabLayout
@@ -22,7 +23,7 @@ class TransactionHistoryActivity : AppCompatActivity() {
         binding = ActivityTransactionHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        detailAccount = (intent.getParcelableExtra(EditAccountActivity.KEY_DETAIL) as GetAllUsersResponseItem?)!!
+        detailAccount = (intent.getParcelableExtra(KEY_DETAIL) as GetAllUsersResponseItem?)!!
 
         val sectionsPagerAdapter = HistorySectionPagerAdapter(this, detailAccount)
         val viewPager: ViewPager2 = binding.pagerHistory

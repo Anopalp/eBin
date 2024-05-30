@@ -12,6 +12,7 @@ import com.dicoding.ebin_v1.data.entity.UserDetail
 import com.dicoding.ebin_v1.data.response.GetAllUsersResponseItem
 import com.dicoding.ebin_v1.data.retrofit.ApiConfig
 import com.dicoding.ebin_v1.databinding.ActivityAccountBinding
+import com.dicoding.ebin_v1.view.ReqHistory.ReqHistoryActivity
 import com.dicoding.ebin_v1.view.editAccount.EditAccountActivity
 import com.dicoding.ebin_v1.view.homepage.HomepageActivity
 import com.dicoding.ebin_v1.view.qrCode.QRCodeActivity
@@ -95,8 +96,8 @@ class AccountActivity : AppCompatActivity() {
         }
 
         binding.btnAccountShowTransactionHistory.setOnClickListener {
-            val intent = Intent(this, TransactionHistoryActivity::class.java)
-            intent.putExtra(TransactionHistoryActivity.KEY_DETAIL, currentUserData)
+            val intent = Intent(this, ReqHistoryActivity::class.java)
+            intent.putExtra(ReqHistoryActivity.KEY_DETAIL, currentUserData)
             startActivity(intent)
         }
     }

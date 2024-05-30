@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.qrCode.QRCodeActivity">
+    tools:context=".view.ReqHistory.ReqHistoryActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/ab_qr_code_app_bar_layout"
+        android:id="@+id/ab_req_history_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,29 +15,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/mt_qr_code_tool_bar"
+            android:id="@+id/mt_req_history_tool_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            app:title="QR Code"
+            app:title="Request Taken"
             app:navigationIcon="@drawable/back_navigation_logo" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/cl_qr_container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_req_history_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="40dp"
-        android:paddingHorizontal="20dp"
-        android:background="@drawable/shape_qr_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-        
-        <ImageView
-            android:id="@+id/iv_qr_code"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/ab_req_history_app_bar_layout"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

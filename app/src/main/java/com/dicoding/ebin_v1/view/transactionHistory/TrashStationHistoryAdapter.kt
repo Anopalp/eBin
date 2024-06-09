@@ -19,8 +19,8 @@ class TrashStationHistoryAdapter : ListAdapter<TransactionItem, TrashStationHist
             binding.apply {
                 txtTrashStationHistoryDateFulfill.text = transaction.timestamp
                 txtTrashStationHistoryPoints.text = transaction.reward.toString()
-                txtTrashStationHistoryAmount.text = transaction.trash?.paper.toString()
-                txtTrashStationHistoryType.text = "paper"
+                txtTrashStationHistoryAmount1.text = transaction.trash?.paper.toString() + " gram"
+                txtTrashStationHistoryAmount2.text = transaction.trash?.plastic.toString() + " gram"
                 txtTrashStationHistoryLocation.text = transaction.trashStation
             }
         }

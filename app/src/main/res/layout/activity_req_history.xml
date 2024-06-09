@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            app:title="Request Taken"
+            app:title="Transactions History"
             app:navigationIcon="@drawable/back_navigation_logo" />
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -68,7 +68,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/txt_trash_station_history_amount"
+            android:id="@+id/txt_trash_station_history_amount1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="100 gram"
@@ -79,16 +79,36 @@
             app:layout_constraintTop_toBottomOf="@id/txt_trash_station_history_pre_points" />
 
         <TextView
-            android:id="@+id/txt_trash_station_history_type"
+            android:id="@+id/txt_trash_station_history_type1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="paper"
+            android:text="paper and"
             android:textSize="14sp"
             android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginStart="5dp"
-            app:layout_constraintStart_toEndOf="@id/txt_trash_station_history_amount"
+            app:layout_constraintStart_toEndOf="@id/txt_trash_station_history_amount1"
             app:layout_constraintTop_toBottomOf="@id/txt_trash_station_history_points" />
 
+        <TextView
+            android:id="@+id/txt_trash_station_history_amount2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100 gram"
+            android:textSize="14sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_trash_station_history_pre_amount" />
+
+        <TextView
+            android:id="@+id/txt_trash_station_history_type2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="plastic"
+            android:textSize="14sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/txt_trash_station_history_amount2"
+            app:layout_constraintTop_toBottomOf="@id/txt_trash_station_history_pre_amount" />
 
         <TextView
             android:id="@+id/txt_trash_station_history_pre_location"
@@ -98,8 +118,8 @@
             android:textSize="14sp"
             android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginStart="5dp"
-            app:layout_constraintStart_toEndOf="@id/txt_trash_station_history_type"
-            app:layout_constraintTop_toBottomOf="@id/txt_trash_station_history_points" />
+            app:layout_constraintStart_toEndOf="@id/txt_trash_station_history_type2"
+            app:layout_constraintTop_toBottomOf="@id/txt_trash_station_history_pre_amount" />
 
         <TextView
             android:id="@+id/txt_trash_station_history_location"
@@ -110,7 +130,7 @@
             android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginStart="5dp"
             app:layout_constraintStart_toEndOf="@id/txt_trash_station_history_pre_location"
-            app:layout_constraintTop_toBottomOf="@id/txt_trash_station_history_points" />
+            app:layout_constraintTop_toBottomOf="@id/txt_trash_station_history_pre_amount" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

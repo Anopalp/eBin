@@ -4,7 +4,7 @@ _Berikut ini adalah cara mengakses aplikasi._
 
 1. Clone repository
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/Anopalp/eBin.git
    ```
 3. Buka pada Android Studio
 4. Pastikan Versi Android Studio dengan Aplikasi sesuai (Minimal Android Studio Hedgehog)

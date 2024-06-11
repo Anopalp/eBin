@@ -57,7 +57,7 @@
             android:id="@+id/txt_request_status_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wait fo pick up"
+            android:text="Wait for pick up"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

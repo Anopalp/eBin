@@ -261,7 +261,7 @@
             android:id="@+id/txt_request_taken_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You have taken thi request"
+            android:text="You have taken this request"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />

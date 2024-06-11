@@ -40,7 +40,7 @@ data class TrashStationsResponseItem(
 	val id: String? = null,
 
 	@field:SerializedName("capacity")
-	val capacity: Int? = null
+	val capacity: Float? = null
 ) : Parcelable
 
 @Parcelize

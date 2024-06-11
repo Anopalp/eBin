@@ -26,20 +26,22 @@ class ReqHistoryActivity : AppCompatActivity() {
 
         detailAccount = (intent.getParcelableExtra(KEY_DETAIL) as GetAllUsersResponseItem?)!!
 
-//        val requests = detailAccount.request
-        val transactions = detailAccount.transaction
-        Log.d("TRANSACTIONS", transactions.toString())
+        val requests = detailAccount.request
+
+//        Transaction
+//        val transactions = detailAccount.transaction
+//        Log.d("TRANSACTIONS", transactions.toString())
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvReqHistoryList.layoutManager = layoutManager
 
-        val trashStationHistoryAdapter = TrashStationHistoryAdapter()
-        trashStationHistoryAdapter.submitList(transactions)
-        binding.rvReqHistoryList.adapter = trashStationHistoryAdapter
+//        val trashStationHistoryAdapter = TrashStationHistoryAdapter()
+//        trashStationHistoryAdapter.submitList(transactions)
+//        binding.rvReqHistoryList.adapter = trashStationHistoryAdapter
 
-//        val historyAdapter = RequestHistoryAdapter()
-//        historyAdapter.submitList(requests)
-//        binding.rvReqHistoryList.adapter = historyAdapter
+        val historyAdapter = RequestHistoryAdapter()
+        historyAdapter.submitList(requests)
+        binding.rvReqHistoryList.adapter = historyAdapter
 
         setAction()
     }
